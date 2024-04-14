@@ -5,24 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class PaymentStatus extends Model
 {
     use HasFactory;
 
     // Define the table name
-    protected $table = 'customers';
+    protected $table = 'payment_statuses';
 
-    // Define primary key
-    protected $primaryKey = 'customer_id';
+    // Define the primary key
+    protected $primaryKey = 'payment_status_id';
 
-    // Define the fillable fields
+    // Define the fillable columns
     protected $fillable = [
-        'name',
-        'phone_number',
-        'address',
+        'payment_status'
     ];
 
-    // Represent a one-to-many relationship with the Order model
     public function order() {
         return $this->hasMany(Order::class);
     }

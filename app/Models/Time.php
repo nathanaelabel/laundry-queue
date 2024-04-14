@@ -5,21 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Time extends Model
 {
     use HasFactory;
 
-    // Define the table name
-    protected $table = 'customers';
+    // Define the table
+    protected $table = 'times';
 
-    // Define primary key
-    protected $primaryKey = 'customer_id';
+    // Define the primary key
+    protected $primaryKey = 'time_id';
 
-    // Define the fillable fields
+    // Define the fillable columns
     protected $fillable = [
-        'name',
-        'phone_number',
-        'address',
+        'type',
+        'duration',
     ];
 
     // Represent a one-to-many relationship with the Order model

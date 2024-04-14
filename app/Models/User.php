@@ -42,4 +42,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Represent a many-to-one relationship with the Role model
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id', 'role_id');
+    }
+
+    // Represent a one-to-one relationship with the Machine model
+    public function machine()
+    {
+        return $this->hasOne(Machine::class, 'machine_id', 'machine_id');
+    }
 }

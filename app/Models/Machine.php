@@ -5,24 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Machine extends Model
 {
     use HasFactory;
 
     // Define the table name
-    protected $table = 'roles';
+    protected $table = 'machines';
 
     // Define primary key
-    protected $primaryKey = 'role_id';
+    protected $primaryKey = 'machine_id';
 
     // Define the fillable fields
     protected $fillable = [
-        'role',
+        'name',
+        'status',
     ];
 
-    // Represent a one-to-many relationship with the User model
+    // Represent a one-to-one relationship with the User model
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class, 'machine_id', 'machine_id');
     }
 }
