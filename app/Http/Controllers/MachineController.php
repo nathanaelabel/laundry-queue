@@ -13,7 +13,7 @@ class MachineController extends Controller
     public function index()
     {
         // Display all machines
-        $machines = Machine::all();
+        $machines = Machine::paginate(10);
         return view('machines.index', compact('machines'));
     }
 

@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreignId('payment_status_id')->constrained('payment_statuses', 'payment_status_id');
             $table->foreignId('machine_id')->constrained('machines', 'machine_id');
             $table->foreignId('time_id')->constrained('times', 'time_id');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

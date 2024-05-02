@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('time_id');
             $table->string('type');
             $table->time('duration');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

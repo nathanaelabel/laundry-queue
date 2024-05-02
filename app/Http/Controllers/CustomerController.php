@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class CustomerController extends Controller
 {
@@ -13,7 +14,7 @@ class CustomerController extends Controller
     public function index()
     {
         // Display list of customers
-        $customers = Customer::all();
+        $customers = Customer::paginate(10);
         return view('customers.index', compact('customers'));
     }
 

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('machine_id');
             $table->string('name');
             $table->enum('status', ['Available', 'In Use', 'Out of Service']);
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 
