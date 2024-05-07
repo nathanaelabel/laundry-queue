@@ -22,8 +22,14 @@ class OrderController extends Controller
      */
     public function create()
     {
-        // Display the form for creating a new order
-        return view('orders.create');
+        // Fetch customers from the database
+        $customers = \App\Models\Customer::all();
+
+        // Fetch order statuses from the database
+        $order_statuses = \App\Models\OrderStatus::all();
+
+        // Pass customers and order statuses to the view
+        return view('orders.create', compact('customers', 'order_statuses'));
     }
 
     /**
