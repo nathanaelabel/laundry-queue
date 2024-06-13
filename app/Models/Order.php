@@ -24,6 +24,11 @@ class Order extends Model
         'weight',
         'quantity',
         'price',
+        'customer_id',
+        'order_status_id',
+        'payment_status_id',
+        'machine_id',
+        'time_id',
     ];
 
     public function customer() {

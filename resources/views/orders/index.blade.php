@@ -24,7 +24,7 @@
                         <td>{{ $order->customer->name }}</td>
                         <td>{{ $order->receipt_date }} {{ $order->receipt_time }}</td>
                         <td>{{ $order->finish_date }} {{ $order->finish_time }}</td>
-                        <td>{{ $order->order_status->order_status }}</td>
+                        <td>{{ $order->orderStatus->order_status }}</td>
                         <td>
                             <a href="{{ route('orders.show', $order->order_id) }}"
                                 class="btn btn-primary btn-sm">View</a>
