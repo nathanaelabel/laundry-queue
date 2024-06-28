@@ -39,19 +39,19 @@ class OrderController extends Controller
     public function create()
     {
         // Fetch customers from the database
-        $customers = \App\Models\Customer::all();
+        $customers = Customer::all();
 
         // Fetch order statuses from the database
-        $order_statuses = \App\Models\OrderStatus::all();
+        $order_statuses = OrderStatus::all();
 
         // Fetch only available machines
-        $machines = \App\Models\Machine::where('status', 'Available')->get();
+        $machines = Machine::where('status', 'Available')->get();
 
         // Fetch all payment statuses
-        $payment_statuses = \App\Models\PaymentStatus::all();
+        $payment_statuses = PaymentStatus::all();
 
         // Fetch all time entries
-        $times = \App\Models\Time::all();
+        $times = Time::all();
 
         // Pass customers and order statuses to the view
         return view('orders.create', compact('customers', 'order_statuses', 'machines', 'payment_statuses', 'times'));
@@ -80,7 +80,7 @@ class OrderController extends Controller
             ->setTimezone('UTC');
 
         // Fetch the time duration
-        $time = \App\Models\Time::where('time_id', $validated['time_type'])->first();
+        $time = Time::where('time_id', $validated['time_type'])->first();
 
         // Default to 6 hours if not found
         $duration = $time ? Carbon::parse($time->duration)->format('H') : 6;
@@ -181,9 +181,24 @@ class OrderController extends Controller
         // Update the order in the database
         $order->update($request->all());
 
+        // Fetch the updated order status
+        $orderStatus = OrderStatus::findOrFail($request->order_status_id);
+
+        // Fetch the machine associated with the order
+        $machine = Machine::findOrFail($order->machine_id);
+
+        // Update the machine status based on the order status
+        if ($orderStatus->order_status == 'Sedang Dicuci') {
+            $machine->status = 'In Use';
+        } else {
+            $machine->status = 'Available';
+        }
+
+        // Save the machine status
+        $machine->save();
+
         return redirect()->route('orders.index')->with('success', 'Order updated successfully.');
     }
-
 
     /**
      * Remove the specified resource from storage.
