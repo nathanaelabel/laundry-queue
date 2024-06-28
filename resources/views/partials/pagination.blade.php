@@ -1,4 +1,4 @@
-<div class="row">
+{{-- <div class="row">
     <div class="col-md-6 align-self-center">
         @php
             $start = ($data->currentPage() - 1) * $data->perPage() + 1;
@@ -25,4 +25,30 @@
             </li>
         </ul>
     </div>
-</div>
+</div> --}}
+
+@if ($data->hasPages())
+    <nav>
+        <ul class="pagination">
+            @if ($data->onFirstPage())
+                <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+            @else
+                <li class="page-item"><a class="page-link" href="{{ $data->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+            @endif
+
+            @foreach ($data->links()->elements[0] as $page => $url)
+                @if ($page == $data->currentPage())
+                    <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+                @else
+                    <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                @endif
+            @endforeach
+
+            @if ($data->hasMorePages())
+                <li class="page-item"><a class="page-link" href="{{ $data->nextPageUrl() }}" rel="next">&raquo;</a></li>
+            @else
+                <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+            @endif
+        </ul>
+    </nav>
+@endif

@@ -12,9 +12,11 @@
                 <tr>
                     <th>#</th>
                     <th>Customer</th>
+                    <th>Machine</th>
+                    <th>Status</th>
                     <th>Receipt Date and Time</th>
                     <th>Finish Date and Time</th>
-                    <th>Status</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,9 +24,10 @@
                     <tr>
                         <td>{{ $orders->firstItem() + $index }}</td>
                         <td>{{ $order->customer->name }}</td>
+                        <td>{{ $order->machine->name}}</td>
+                        <td>{{ $order->orderStatus->order_status }}</td>
                         <td>{{ $order->receipt_date }} {{ $order->receipt_time }}</td>
                         <td>{{ $order->finish_date }} {{ $order->finish_time }}</td>
-                        <td>{{ $order->orderStatus->order_status }}</td>
                         <td>
                             <a href="{{ route('orders.show', $order->order_id) }}"
                                 class="btn btn-primary btn-sm">View</a>
