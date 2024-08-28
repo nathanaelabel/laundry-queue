@@ -7,7 +7,13 @@
         <div>
             <p></p>
             <p><strong>Customer:</strong> {{ $order->customer->name }}</p>
-            <p><strong>Machine:</strong> {{ $order->machine->name }}</p>
+            <p><strong>Machine:</strong>
+                @if (in_array($order->orderStatus->order_status, ['Setrika', 'Selesai']))
+                    Not needed
+                @else
+                    {{ $order->machine ? $order->machine->name : 'No machine assigned' }}
+                @endif
+            </p>
             <p><strong>Receipt Date and Time:</strong> {{ $order->receipt_date }} {{ $order->receipt_time }}</p>
             <p><strong>Finish Date and Time:</strong> {{ $order->finish_date }} {{ $order->finish_time }}</p>
             <p><strong>Weight:</strong> {{ $order->weight }}</p>

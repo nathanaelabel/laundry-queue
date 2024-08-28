@@ -57,8 +57,8 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $machine->name }}</h5>
                             <p class="card-text">{{ $machine->status }}</p>
-                            <a href="{{ route('machines.show', $machine->machine_id) }}" class="btn btn-primary btn-sm">View</a>
-                            <a href="{{ route('machines.edit', $machine->machine_id) }}" class="btn btn-info btn-sm">Edit</a>
+                            <a href="{{ route('machines.show', $machine->machine_id) }}" class="btn btn-info btn-sm">View</a>
+                            <a href="{{ route('machines.edit', $machine->machine_id) }}" class="btn btn-warning btn-sm">Edit</a>
                         </div>
                     </div>
                 </div>

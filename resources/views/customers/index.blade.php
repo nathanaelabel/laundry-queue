@@ -25,10 +25,10 @@
                         <td>{{ $customer->phone_number }}</td>
                         <td>{{ $customer->address }}</td>
                         <td>
-                            <a href="{{ route('customers.show', $customer->customer_id) }}"
-                                class="btn btn-primary btn-sm">View</a>
-                            <a href="{{ route('customers.edit', $customer->customer_id) }}"
-                                class="btn btn-info btn-sm">Edit</a>
+                            <a href="{{ route('customers.show', $customer->customer_id) }}" class="btn btn-info btn-sm"><i
+                                    class="bi bi-eye"></i></a>
+                            <a href="{{ route('customers.edit', $customer->customer_id) }}" class="btn btn-warning btn-sm"><i
+                                    class="bi bi-pencil"></i></a>
                         </td>
                     </tr>
                 @empty

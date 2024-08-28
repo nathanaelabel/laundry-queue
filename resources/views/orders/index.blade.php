@@ -24,13 +24,17 @@
                         <td>{{ $orders->firstItem() + $index }}</td>
                         <td>{{ $order->customer->name }}</td>
                         <td>{{ $order->orderStatus->order_status }}</td>
-                        <td>{{ \Carbon\Carbon::parse($order->receipt_date . ' ' . $order->receipt_time)->format('d M Y, H:i') }}</td>
-                        <td>{{ \Carbon\Carbon::parse($order->finish_date . ' ' . $order->finish_time)->format('d M Y, H:i') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($order->receipt_date . ' ' . $order->receipt_time)->format('d M Y, H:i') }}
+                        </td>
+                        <td>{{ \Carbon\Carbon::parse($order->finish_date . ' ' . $order->finish_time)->format('d M Y, H:i') }}
+                        </td>
                         <td>
-                            <a href="{{ route('orders.show', $order->order_id) }}"
-                                class="btn btn-primary btn-sm">View</a>
-                            <a href="{{ route('orders.edit', $order->order_id) }}"
-                                class="btn btn-info btn-sm">Edit</a>
+                            <a href="{{ route('orders.show', $order->order_id) }}" class="btn btn-info btn-sm">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <a href="{{ route('orders.edit', $order->order_id) }}" class="btn btn-warning btn-sm">
+                                <i class="bi bi-pencil"></i>
+                            </a>
                         </td>
                     </tr>
                 @empty
