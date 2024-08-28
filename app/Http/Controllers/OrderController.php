@@ -71,7 +71,7 @@ class OrderController extends Controller
             'customer_id' => 'required|exists:customers,customer_id',
             'order_status_id' => 'required|exists:order_statuses,order_status_id',
             'payment_status_id' => 'required|exists:payment_statuses,payment_status_id',
-            'machine_id' => 'required|exists:machines,machine_id',
+            'machine_id' => 'nullable|exists:machines,machine_id',
             'time_type' => 'required|exists:times,time_id'
         ]);
 
@@ -169,7 +169,7 @@ class OrderController extends Controller
             'quantity' => 'required|integer',
             'price' => 'required|numeric',
             'customer_id' => 'required|exists:customers,customer_id',
-            'machine_id' => 'required|exists:machines,machine_id',
+            'machine_id' => 'nullable|exists:machines,machine_id',
             'order_status_id' => 'required|exists:order_statuses,order_status_id',
             'payment_status_id' => 'required|exists:payment_statuses,payment_status_id',
             'time_type' => 'required|exists:times,time_id',
