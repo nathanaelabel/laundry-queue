@@ -23,7 +23,8 @@ return new class extends Migration
             $table->foreignId('customer_id')->constrained('customers', 'customer_id');
             $table->foreignId('order_status_id')->constrained('order_statuses', 'order_status_id')->onDelete('restrict');
             $table->foreignId('payment_status_id')->constrained('payment_statuses', 'payment_status_id');
-            $table->foreignId('machine_id')->constrained('machines', 'machine_id');
+            // $table->foreignId('machine_id')->constrained('machines', 'machine_id');
+            $table->foreignId('machine_id')->nullable()->constrained('machines', 'machine_id');
             $table->foreignId('time_id')->constrained('times', 'time_id');
             $table->timestamps();
         });
