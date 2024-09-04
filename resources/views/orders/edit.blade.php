@@ -31,16 +31,6 @@
                     @endforeach
                 </select>
             </div> --}}
-            <div class="form-group">
-                <label for="order_status_id">Order Status</label>
-                <select name="order_status_id" id="order_status_id" class="form-control" required>
-                    @foreach ($order_statuses as $status)
-                        <option value="{{ $status->order_status_id }}" {{ old('order_status_id', $order->order_status_id ?? '') == $status->order_status_id ? 'selected' : '' }}>
-                            {{ $status->order_status }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
 
             <div class="mb-3">
                 <label for="receipt_date" class="form-label">Receipt Date</label>
@@ -72,18 +62,7 @@
                     value="{{ old('price', $order->price) }}" required>
             </div>
 
-            {{-- <div class="mb-3">
-                <label for="order_status_id" class="form-label">Order Status</label>
-                <select class="form-select" id="order_status_id" name="order_status_id">
-                    @foreach ($order_statuses as $status)
-                        <option value="{{ $status->order_status_id }}"
-                            {{ $order->order_status_id == $status->order_status_id ? 'selected' : '' }}>
-                            {{ $status->order_status }}
-                        </option>
-                    @endforeach
-                </select>
-            </div> --}}
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="order_status_id">Order Status</label>
                 <select name="order_status_id" id="order_status_id" class="form-control" required>
                     @foreach ($order_statuses as $status)
